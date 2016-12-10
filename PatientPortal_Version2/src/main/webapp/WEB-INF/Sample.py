@@ -13,8 +13,8 @@ import csv
 import os
 from requests import Request, Session
 
-db = pymysql.connect(host="localhost",    # your host, usually localhost
-                     user="root",         # your username
+db = pymysql.connect(host="rdsinstance.cctzpkr5yqhb.us-west-2.rds.amazonaws.com",    # your host, usually localhost
+                     user="rdsUser",         # your username
                      passwd="password",  # your password
                      db="patientportal")        # name of the data base
 
@@ -23,7 +23,7 @@ db = pymysql.connect(host="localhost",    # your host, usually localhost
 cur = db.cursor()
 abc = db.cursor()
 # Use all the SQL you like
-cur.execute("SELECT id,userName,password FROM user WHERE userName not in('admin') limit 3")
+cur.execute("SELECT id,username,password FROM user WHERE userName not in('admin') limit 3")
 
 data = cur.fetchall()
 # print all the first cell of all the rows
@@ -31,13 +31,13 @@ for row in data:
     #print row[1],row[2]
 	login_data = urllib.urlencode({'username' : row[1], 'j_password' : row[2]})
 	#data = {'username' : row[1], 'j_password' : row[2]}
-	url='http://localhost:8081/myportal/'
+	url='http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com8081/myportal/'
 	s = requests.Session()
 	#s = Session()
-	requests.post('http://localhost:8081/myportal/', login_data)
+	requests.post('http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com:8081/myportal/', login_data)
 	print "session open for"
 	print row[1]
-	#webbrowser.open('http://localhost:8081/myportal/loginUser.htm?uname=%s'%row[1])
+	webbrowser.open('http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com:8081/myportal/loginUser.htm?uname=%s'%row[1])
 	#r = requests.get('http://localhost:8081/myportal/')
 	#print r.request.headers
 	
@@ -52,7 +52,7 @@ for row in data:
     format = 'csv'
     index = str(row[0])
     print dir_name
-    csvFile = os.path.abspath("/home/Ubuntu/csv/user.csv")
+    csvFile = os.path.abspath("/home/Ubuntu/csv/dataset.csv")
     print csvFile
     full_path = os.path.join(dir_name,base_filename+index+'.'+format)
     

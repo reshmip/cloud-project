@@ -13,8 +13,8 @@ import csv
 import os
 from requests import Request, Session
 
-db = pymysql.connect(host="localhost",    # your host, usually localhost
-                     user="root",         # your username
+db = pymysql.connect(host="rdsinstance.cctzpkr5yqhb.us-west-2.rds.amazonaws.com",    # your host, usually localhost
+                     user="rdsUser",         # your username
                      passwd="password",  # your password
                      db="patientportal")        # name of the data base
 
@@ -42,7 +42,7 @@ for row in data:
     #print r.request.headers
     
     cur.execute("UPDATE user SET logged='false' WHERE userName='%s'"%row[1])
-    for i in range(0,2):
+    for i in range(0,14):
         abc.execute("select Patient_id,Gender,Age,Status,PR_Status,Tumor,Node,Node_Coded,Metastasis,Metastasis_Coded,Converted_Stage,Last_Visit from dataset where patient_id = '%s' and Last_Visit BETWEEN '03/01/15' AND '09/10/15'"%row[0])
         out = abc.fetchall()
         for o in out:
