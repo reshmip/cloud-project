@@ -9,6 +9,8 @@ import pymysql
 import urllib, urllib2, cookielib
 import requests
 import webbrowser
+import csv
+import os
 from requests import Request, Session
 
 db = pymysql.connect(host="localhost",    # your host, usually localhost
@@ -21,7 +23,7 @@ db = pymysql.connect(host="localhost",    # your host, usually localhost
 cur = db.cursor()
 
 # Use all the SQL you like
-cur.execute("SELECT id,userName,password FROM user WHERE userName not in('admin') limit 3")
+cur.execute("SELECT id,userName,password FROM user WHERE userName not in('admin') limit 7")
 
 data = cur.fetchall()
 # print all the first cell of all the rows
@@ -35,25 +37,29 @@ for row in data:
 	requests.post('http://localhost:8081/myportal/', login_data)
 	print "session open for"
 	print row[1]
-	webbrowser.open('http://localhost:8081/myportal/loginUser.htm?uname=%s'%row[1])
+	#webbrowser.open('http://localhost:8081/myportal/loginUser.htm?uname=%s'%row[1])
 	#r = requests.get('http://localhost:8081/myportal/')
 	#print r.request.headers
 	
 	cur.execute("UPDATE user SET logged='true' WHERE userName='%s'"%row[1])
 	for i in range(0,2):
-		print cur.execute("select patient_id from dataset where patient_id = '%s' and Last_Visit BETWEEN '3/1/2015' AND '3/9/2015'"%row[0])
+		print cur.execute("select patient_id from dataset where patient_id = '%s' and Last_Visit BETWEEN '3/1/2015' AND '6/9/2015'"%row[0])
+	dir_name = os.path.abspath("paths")
+	base_filename = 'report'
+	format = 'csv'
+	index = str(row[0])
+	#print dir_name
+	
+	full_path = os.path.join(dir_name,base_filename+index+'.'+format)
+	print "uploaded the below file"
+	print os.path.join(base_filename+index+'.'+format)
+	with open(full_path, 'w') as outFile:
+		fileWriter = csv.writer(outFile)
+		with open('user.csv','r') as inFile:
+			fileReader = csv.reader(inFile)
+			for row in fileReader:
+				fileWriter.writerow(row)
 	db.commit()
-
-#username = 'user1'
-#password = 'user1'
-
-#cj = cookielib.CookieJar()
-#opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
-
-#opener.open('http://localhost:8081/myportal/', login_data)
-#resp = opener.open('http://localhost:8081/myportal/')
-#print resp.read()
-
 
 #s.save()
 db.close()

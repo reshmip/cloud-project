@@ -1,0 +1,225 @@
+/* Grays */
+/* Highlights */
+/*==== GENERAL ====*/
+html {
+  font: 62.5%/2.2rem 'Source Sans Pro', sans-serif;
+  color: #333; }
+
+/*==== FONTS ====*/
+body, button, input, select {
+  font-size: 1.5rem; }
+
+p, li {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  margin: 1.0rem 0; }
+
+h1, h2, h3, h4 {
+  margin: 0; }
+
+h1 {
+  font-size: 3.0rem;
+  font-weight: 200; }
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 200; }
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 400; }
+
+h4 {
+  font-size: 1.6rem; }
+
+/*==== TAGS ====*/
+label {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: #666;
+  margin-top: 1.0rem;
+  display: block; }
+
+input[type=text],
+input[type=url],
+input[type=tel],
+input[type=password],
+input[type=number],
+input[type=color],
+input[type=email] {
+  font-size: 1.6rem;
+  padding: 1.0rem;
+  border: 1px solid #666;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem; }
+
+/*==== FONTS ====*/
+.text-small {
+  font-size: 1.5rem; }
+
+.text-smaller {
+  font-size: 1.4rem; }
+
+.text-smallest {
+  font-size: 1.3rem; }
+
+.text-large {
+  font-size: 1.8rem; }
+
+/*==== BUTTONS ====*/
+.btn-large {
+  font-size: 1.6rem;
+  line-height: 4.0rem; }
+
+.btn-inline {
+  display: inline-block; }
+
+.btn[disabled],
+.btn-primary[disabled] {
+  opacity: 0.5; }
+
+/* Old core */
+/* Grays */
+/* Highlights */
+/*==== GENERAL ====*/
+html {
+  font: 62.5%/2.2rem 'Source Sans Pro', sans-serif;
+  color: #333; }
+
+/*==== FONTS ====*/
+body, button, input, select {
+  font-size: 1.5rem; }
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.8rem; }
+
+h1, h2, h3, h4 {
+  margin: 0; }
+
+h1 {
+  font-size: 3.0rem;
+  font-weight: 200; }
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 200; }
+
+h3 {
+  font-size: 1.8rem;
+  font-weight: 400; }
+
+h4 {
+  font-size: 1.6rem; }
+
+/*==== TAGS ====*/
+label {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: #666;
+  margin-top: 1.0rem;
+  display: block; }
+
+input[type=text],
+input[type=url],
+input[type=tel],
+input[type=password],
+input[type=number],
+input[type=color],
+input[type=email] {
+  font-size: 1.6rem;
+  padding: 1.0rem;
+  border: 1px solid #666;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  border-radius: 0.4rem; }
+
+/*==== FONTS ====*/
+.text-small {
+  font-size: 1.5rem; }
+
+.text-smaller {
+  font-size: 1.4rem; }
+
+.text-smallest {
+  font-size: 1.3rem; }
+
+.text-large {
+  font-size: 1.8rem; }
+
+/*==== BUTTONS ====*/
+.btn {
+  -moz-user-select: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 3.0rem;
+  padding: 0 2.0rem;
+  margin: 1.0rem 1.0rem 1.0rem 0;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap; }
+
+.btn:hover {
+  background: #848890;
+  color: #FFF; }
+
+btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+.btn-primary {
+  color: #ffffff;
+  background-color: #66be55;
+  border-color: #57b445; }
+
+.btn-primary:hover {
+  color: #ffffff;
+  background-color: #52a941;
+  border-color: #428834; }
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
+  background-color: #66be55;
+  border-color: #57b445; }
+
+.btn-default {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc; }
+
+.btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default[disabled].active, fieldset[disabled] .btn-default.active {
+  background-color: #ffffff;
+  border-color: #cccccc; }
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad; }
+
+.btn-default:active,
+.btn-default.active,
+.open .dropdown-toggle.btn-default {
+  background-image: none; }
+
+.btn-large {
+  font-size: 1.6rem;
+  line-height: 4.0rem; }
+
+.btn-inline {
+  display: inline-block; }
