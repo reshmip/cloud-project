@@ -113,8 +113,8 @@ public class HomeController {
 			String pythonScript = servletContext.getRealPath("/WEB-INF/Sample.py");
 			System.out.println(pythonScript);
 			
-			cmd[0] = "C:\\Users\\Reshmi\\Anaconda2\\python.exe";
-			cmd[1] = pythonScript;
+			//cmd[0] = "C:\\Users\\Reshmi\\Anaconda2\\python.exe";
+			//cmd[1] = pythonScript;
 			//cmd[1] = file.toString();
 		
 			
@@ -122,8 +122,8 @@ public class HomeController {
 			
 			String commd = "python "+pythonScript;
 			System.out.println(commd);
-			//Process pr = Runtime.getRuntime().exec(commd);
-			Process pr = rt.exec(cmd);
+			Process pr = Runtime.getRuntime().exec(commd);
+			//Process pr = rt.exec(cmd);
 			System.out.println(pr.getInputStream());
 			
 			BufferedReader bfr = new BufferedReader(new InputStreamReader(pr.getInputStream()));

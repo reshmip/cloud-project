@@ -14,8 +14,8 @@ public class DAO {
     
     public DAO(){
     	 driver = "com.mysql.jdbc.Driver";
-         dburl = "jdbc:mysql://localhost:3306/patientportal";
-         dbuser = "root";
+         dburl = "jdbc:mysql://rdsinstance.cctzpkr5yqhb.us-west-2.rds.amazonaws.com:3306/patientportal";
+         dbuser = "rdsUser";
          dbpassword="password";
         
         //DbUtils.loadDriver(driver);

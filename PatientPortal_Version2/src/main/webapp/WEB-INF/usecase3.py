@@ -23,7 +23,7 @@ db = pymysql.connect(host="rdsinstance.cctzpkr5yqhb.us-west-2.rds.amazonaws.com"
 cur = db.cursor()
 abc = db.cursor()
 # Use all the SQL you like
-cur.execute("SELECT id,userName,password FROM user WHERE userName not in('admin') limit 17")
+cur.execute("SELECT id,username,password FROM user WHERE username not in('admin') limit 17")
 
 data = cur.fetchall()
 # print all the first cell of all the rows
@@ -31,17 +31,17 @@ for row in data:
     #print row[1],row[2]
     login_data = urllib.urlencode({'username' : row[1], 'j_password' : row[2]})
     #data = {'username' : row[1], 'j_password' : row[2]}
-    url='http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com:8081/myportal/'
+    url='http://ec2-54-175-246-226.compute-1.amazonaws.com:8080/myportal/'
     s = requests.Session()
     #s = Session()
-    requests.post('http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com:8081/myportal/', login_data)
+    requests.post('http://ec2-54-175-246-226.compute-1.amazonaws.com:8080/myportal/', login_data)
     print "session open for"
     print row[1]
     #webbrowser.open('http://localhost:8081/myportal/loginUser.htm?uname=%s'%row[1])
     #r = requests.get('http://localhost:8081/myportal/')
     #print r.request.headers
     
-    cur.execute("UPDATE user SET logged='false' WHERE userName='%s'"%row[1])
+    cur.execute("UPDATE user SET logged='false' WHERE username='%s'"%row[1])
     for i in range(0,10):
         abc.execute("select Patient_id,Gender,Age,Status,PR_Status,Tumor,Node,Node_Coded,Metastasis,Metastasis_Coded,Converted_Stage,Last_Visit from dataset where patient_id = '%s' and Last_Visit BETWEEN '03/01/15' AND '06/20/15'"%row[0])
         out = abc.fetchall()

@@ -23,7 +23,7 @@ db = pymysql.connect(host="rdsinstance.cctzpkr5yqhb.us-west-2.rds.amazonaws.com"
 cur = db.cursor()
 abc = db.cursor()
 # Use all the SQL you like
-cur.execute("SELECT id,username,password FROM user WHERE userName not in('admin') limit 3")
+cur.execute("SELECT id,username,password FROM user WHERE username not in('admin') limit 3")
 
 data = cur.fetchall()
 # print all the first cell of all the rows
@@ -31,39 +31,23 @@ for row in data:
     #print row[1],row[2]
 	login_data = urllib.urlencode({'username' : row[1], 'j_password' : row[2]})
 	#data = {'username' : row[1], 'j_password' : row[2]}
-	url='http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com8081/myportal/'
+	url='http://ec2-54-175-246-226.compute-1.amazonaws.com:8080/myportal/'
 	s = requests.Session()
 	#s = Session()
-	requests.post('http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com:8081/myportal/', login_data)
+	requests.post('http://ec2-54-175-246-226.compute-1.amazonaws.com:8080/myportal/', login_data)
 	print "session open for"
 	print row[1]
-	webbrowser.open('http://ec2-35-165-155-11.us-west-2.compute.amazonaws.com:8081/myportal/loginUser.htm?uname=%s'%row[1])
+	webbrowser.open('http://ec2-54-175-246-226.compute-1.amazonaws.com:8080/myportal/loginUser.htm?uname=%s'%row[1])
 	#r = requests.get('http://localhost:8081/myportal/')
 	#print r.request.headers
 	
-	cur.execute("UPDATE user SET logged='false' WHERE userName='%s'"%row[1])
+	cur.execute("UPDATE user SET logged='false' WHERE username='%s'"%row[1])
 	for i in range(0,2):
 		abc.execute("select Patient_id,Gender,Age,Status,PR_Status,Tumor,Node,Node_Coded,Metastasis,Metastasis_Coded,Converted_Stage,Last_Visit from dataset where patient_id = '%s' and Last_Visit BETWEEN '03/01/15' AND '03/10/15'"%row[0])
 		out = abc.fetchall()
 		for o in out:
 			print o[0],o[1],o[2],o[3],o[4],o[5],o[6],o[7],o[8],o[9],o[10],o[11]
-	dir_name = os.path.abspath("/home/Ubuntu/csv")
-    base_filename = 'report'
-    format = 'csv'
-    index = str(row[0])
-    print dir_name
-    csvFile = os.path.abspath("/home/Ubuntu/csv/dataset.csv")
-    print csvFile
-    full_path = os.path.join(dir_name,base_filename+index+'.'+format)
-    
-    with open(full_path, 'w') as outFile:
-        fileWriter = csv.writer(outFile)
-        with open(csvFile,'r') as inFile:
-            fileReader = csv.reader(inFile)
-            for row in fileReader:
-                fileWriter.writerow(row)
-    print "uploaded the below file"
-    print os.path.join(base_filename+index+'.'+format)
+	
 	db.commit()
 
 #s.save()
